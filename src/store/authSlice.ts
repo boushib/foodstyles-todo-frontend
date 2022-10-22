@@ -20,8 +20,8 @@ export const authSlice = createSlice({
   reducers: {
     initAuth: (state) => {
       const token = localStorage.getItem('token')
-      const storeUser = localStorage.getItem('user')
-      const user = storeUser ? JSON.parse(storeUser) : null
+      const storedUser = localStorage.getItem('user')
+      const user = storedUser ? JSON.parse(storedUser) : null
       state.token = token
       state.user = user
       state.isInit = true

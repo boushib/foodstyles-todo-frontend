@@ -6,8 +6,8 @@ import FormInput from '../../components/FormInput'
 import TodoItem from '../../components/TodoItem'
 import { ITodoItem, TodoItemStatus } from '../../models'
 import { useSelector } from '../../hooks'
-import './Home.sass'
 import { useNavigate } from 'react-router-dom'
+import './Home.sass'
 
 const Home = () => {
   const FILTERS = ['All', 'Completed', 'Uncompleted']
@@ -24,10 +24,12 @@ const Home = () => {
       isInit && user && handleFetchTodos()
       !user && navigate('/login')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentFilter, isInit, user])
 
   useEffect(() => {
     formError && setFormError('')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title])
 
   const handleAddTodo = async (e: React.FormEvent<HTMLFormElement>) => {
