@@ -44,7 +44,7 @@ const Home = () => {
         case 'Completed':
           setTodos(data.todos.filter((todo: ITodoItem) => todo.status === 'COMPLETED'))
           break
-        case 'Incomplleted':
+        case 'Uncompleted':
           setTodos(data.todos.filter((todo: ITodoItem) => todo.status === 'IN_PROGRESS'))
           break
         default:
