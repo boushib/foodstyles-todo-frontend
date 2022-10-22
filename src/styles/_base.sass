@@ -1,0 +1,51 @@
+body
+  background-color: var(--color-bg)
+
+.table
+  width: 100%
+  border-collapse: collapse
+  table-layout: fixed
+
+  &__wrapper
+    overflow-x: auto
+
+  thead
+    border-bottom: 1px solid rgba(#fff, .05)
+
+  th
+    text-align: left
+    font-weight: 400
+    color: var(--color-primary)
+
+  th, td
+    padding: 10px
+    font-size: 16px
+    white-space: nowrap
+
+  td
+    max-width: 180px
+    overflow: hidden
+    text-overflow: ellipsis
+
+.page
+  padding: 60px 0
+
+  .container
+    display: flex
+    flex-direction: column
+    gap: 24px
+
+.form
+  display: flex
+  flex-direction: column
+  gap: 22px
+
+.auth
+  &__card
+    margin: 0 auto
+
+  &__link
+    font-size: 15px
+
+  .btn
+    margin-top: 28px
