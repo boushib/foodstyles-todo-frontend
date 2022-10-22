@@ -1,0 +1,62 @@
+.checkbox
+  background-color: transparent
+  position: relative
+  cursor: pointer
+  display: flex
+  align-items: center
+  gap: 10px
+
+  .checkmark
+    width: 20px
+    height: 20px
+    flex-shrink: 0
+    display: block
+    border: 1px solid rgba(#000, .25)
+    transition: all 0.3s ease
+    position: relative
+    border-radius: 4px
+
+    &::after
+      content: ""
+      position: absolute
+      left: 6px
+      top: 2px
+      width: 4px
+      height: 9px
+      border: solid #fff
+      border-width: 0 2px 2px 0
+      transform: rotate(45deg)
+      opacity: 0
+      border-radius: 2px
+      transition: all 0.3s ease-in-out
+
+  input
+    width: 0
+    height: 0
+    position: absolute
+    top: 0
+    left: 0
+    opacity: 0
+
+    &:checked
+      & ~ .checkmark
+        background-color: var(--color-primary)
+        border-color: var(--color-primary)
+
+        &::after
+          opacity: 1
+
+  &--read-only
+    cursor: default
+
+  &--disabled
+    color: var(--color-disabled)
+    cursor: not-allowed
+
+    .checkmark
+      border-color: var(--color-disabled)
+
+    input:checked
+      & ~ .checkmark
+        background-color: var(--color-disabled)
+        border-color: var(--color-disabled)

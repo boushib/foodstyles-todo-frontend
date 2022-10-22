@@ -1,1 +1,27 @@
 .home
+  &__form
+    margin-bottom: 28px
+
+  &__todos
+    display: flex
+    flex-direction: column
+    gap: 16px
+    margin-bottom: 40px
+
+  &__filters
+    display: flex
+    gap: 18px
+    font-size: 15px
+
+    b
+      opacity: 0.6
+
+  &__filter
+    transition: all .3s ease-in-out
+    text-decoration: underline
+    color: var(--color-primary)
+    cursor: pointer
+
+    &--active
+      text-decoration: none
+      color: var(--color-text)
