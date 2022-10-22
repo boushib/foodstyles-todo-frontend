@@ -7,6 +7,7 @@ import TodoItem from '../../components/TodoItem'
 import { ITodoItem, TodoItemStatus } from '../../models'
 import { useSelector } from '../../hooks'
 import './Home.sass'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const FILTERS = ['All', 'Completed', 'Uncompleted']
@@ -16,9 +17,13 @@ const Home = () => {
   const [title, setTitle] = useState('')
   const [formError, setFormError] = useState('')
   const [error, setError] = useState('')
+  const navigate = useNavigate()
 
   useEffect(() => {
-    isInit && user && handleFetchTodos()
+    if (isInit) {
+      isInit && user && handleFetchTodos()
+      !user && navigate('/login')
+    }
   }, [currentFilter, isInit, user])
 
   useEffect(() => {
