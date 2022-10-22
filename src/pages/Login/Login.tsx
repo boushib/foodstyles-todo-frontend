@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { populateAuthState } from '../../store/authSlice'
 import api from '../../api'
 import Button from '../../components/Button'
 import Card from '../../components/Card'
@@ -10,6 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -17,9 +20,7 @@ const Login = () => {
     try {
       const { data } = await api.post('/login', { email, password })
       const { user, token } = data
-      console.log({ user, token })
-      localStorage.setItem('user', JSON.stringify(user))
-      localStorage.setItem('token', token)
+      dispatch(populateAuthState({ token, user, isInit: true }))
       navigate('/')
     } catch (error) {
       // TODO: Show error message

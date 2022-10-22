@@ -6,9 +6,11 @@ import FormInput from '../../components/FormInput'
 import TodoItem from '../../components/TodoItem'
 import { ITodoItem, TodoItemStatus } from '../../models'
 import './Home.sass'
+import { useSelector } from '../../hooks'
 
 const Home = () => {
   const FILTERS = ['All', 'Completed', 'Uncompleted']
+  const { isInit, user } = useSelector((s) => s.auth)
   const [currentFilter, setCurrentFilter] = useState(FILTERS[0])
   const [todos, setTodos] = useState<ITodoItem[]>([])
   const [title, setTitle] = useState('')
@@ -16,8 +18,8 @@ const Home = () => {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    handleFetchTodos()
-  }, [currentFilter])
+    isInit && user && handleFetchTodos()
+  }, [currentFilter, isInit, user])
 
   useEffect(() => {
     formError && setFormError('')
