@@ -5,8 +5,8 @@ import Card from '../../components/Card'
 import FormInput from '../../components/FormInput'
 import TodoItem from '../../components/TodoItem'
 import { ITodoItem, TodoItemStatus } from '../../models'
-import './Home.sass'
 import { useSelector } from '../../hooks'
+import './Home.sass'
 
 const Home = () => {
   const FILTERS = ['All', 'Completed', 'Uncompleted']
