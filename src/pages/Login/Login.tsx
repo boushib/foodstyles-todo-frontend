@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import api from '../../api'
 import Button from '../../components/Button'
 import Card from '../../components/Card'
 import FormInput from '../../components/FormInput'
@@ -8,10 +9,22 @@ import './Login.sass'
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(email, password)
+
+    try {
+      const { data } = await api.post('/login', { email, password })
+      const { user, token } = data
+      console.log({ user, token })
+      localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('token', token)
+      navigate('/')
+    } catch (error) {
+      // TODO: Show error message
+      console.error(error)
+    }
   }
 
   return (
