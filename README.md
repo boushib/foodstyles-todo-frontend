@@ -11,7 +11,7 @@ This is the frontend for _FoodStyles_ a minimal & clean todo application to help
 
 ## Dev Environment
 
-Create a `.env` file in your frontend root directly and include this environment variables.
+Create a `.env` file in your frontend root directory and include this environment variables.
 
 ```text
 REACT_APP_API_URL=http://localhost:8080/api/v1
@@ -23,7 +23,7 @@ Run the app in development mode. (This will automatically run the application on
 yarn dev
 ```
 
-Builds the app for production
+Build the app for production
 
 ```text
 yarn build
